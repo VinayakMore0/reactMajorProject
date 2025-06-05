@@ -8,7 +8,7 @@ const HorizontalCards = ({ data }) => {
           <img
             className="w-full h-[55%] object-cover"
             src={`https://image.tmdb.org/t/p/original/${
-              d.backdrop_path || d.poster_path
+              d.poster_path || d.backdrop_path
             }`}
             alt={d.title || d.name}
           />
