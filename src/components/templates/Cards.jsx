@@ -5,9 +5,13 @@ const Cards = ({ data, title }) => {
   return (
     <div className="flex flex-wrap w-full px-[5%] bg-[#1F1E24]">
       {data.map((c, i) => (
-        <Link key={i} className="relative w-[25vh] mr-[5%] mb-[5%]">
+        <Link
+          to={`/${c.media_type || title}/details/${c.id}`}
+          key={i}
+          className="relative w-[25vh] mr-[5%] mb-[5%]"
+        >
           <img
-            className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] w-[40vh] object-cover"
+            className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[40vh] object-cover"
             src={`https://image.tmdb.org/t/p/original/${
               c.poster_path || c.backdrop_path || c.profile_path
             }`}

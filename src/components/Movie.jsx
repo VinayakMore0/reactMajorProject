@@ -52,7 +52,8 @@ const Movie = () => {
             onClick={() => navigate(-1)}
             className="hover:text-[#6556CD] ri-arrow-left-line"
           ></i>{" "}
-          Movies<small className="ml-2 text-sm text-zinc-600">({category})</small>
+          Movies
+          <small className="ml-2 text-sm text-zinc-600">({category})</small>
         </h1>
         <div className="flex items-center w-[80%]">
           <Topnav />
@@ -70,7 +71,7 @@ const Movie = () => {
         hasMore={hasMore}
         loader={<h1>Loading....</h1>}
       >
-        <Cards data={movie} title={category} />
+        <Cards data={movie} title="movie" />
       </InfiniteScroll>
     </div>
   ) : (
