@@ -8,16 +8,16 @@ export const personSlice = createSlice({
   name: "person",
   initialState,
   reducers: {
-    loadperson: (state, action) => {
+    loadPerson: (state, action) => {
       state.info = action.payload;
     },
-    removeperson: (state) => {
+    removePerson: (state) => {
       state.info = null;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loadperson, removeperson } = personSlice.actions;
+export const { loadPerson, removePerson } = personSlice.actions;
 
 export default personSlice.reducer;

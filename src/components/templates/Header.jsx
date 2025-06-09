@@ -19,15 +19,26 @@ const Header = ({ data }) => {
       </h1>
       <p className="w-[70%] mt-3 mb-3 text-white">
         {data.overview.slice(0, 200)}...
-        <Link to={`/${data.media_type}/details/${data.id}`} className="text-blue-400">more</Link>
+        <Link
+          to={`/${data.media_type}/details/${data.id}`}
+          className="text-blue-400"
+        >
+          more
+        </Link>
       </p>
       <p className="text-white">
         <i className="text-yellow-500 ri-megaphone-fill"></i>{" "}
         {data.release_date || "No Information"}
+        {"  "}
         <i className="text-yellow-500 ri-album-fill"></i>{" "}
         {data.media_type.toUpperCase()}
       </p>
-      <Link  className="mt-5 bg-[#6556CD] p-4 rounded">Watch Trailer</Link>
+      <Link
+        to={`/${data.media_type}/details/${data.id}/trailer`}
+        className="mt-5 bg-[#6556CD] p-4 rounded text-white"
+      >
+        Watch Trailer
+      </Link>
     </div>
   );
 };
