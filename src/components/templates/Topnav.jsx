@@ -27,7 +27,7 @@ const Topnav = () => {
         value={query}
         className="w-[50%] text-zinc-200 mx-10 p-5 text-xl outline-none border-none bg-transparent"
         type="text"
-        placeholder="search anything"
+        placeholder="Search Anything..."
       />
       {query.length > 0 && (
         <i

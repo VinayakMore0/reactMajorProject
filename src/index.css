@@ -3,6 +3,18 @@
 /* primary - #1F1E24 */
 /* secondary - #6556CD */
 
+:root {
+  --primary-dark: #1f1e24;
+  --primary-light: #2a2931;
+  --accent-main: #6556cd;
+  --accent-light: #8678e0;
+  --accent-dark: #4e41b0;
+  --text-light: #f8f8f8;
+  --text-muted: #a0a0a8;
+  --gradient-bg: linear-gradient(135deg, #6556cd 0%, #4e41b0 100%);
+  --card-hover: rgba(101, 86, 205, 0.1);
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -65,4 +77,77 @@ select::-ms-expand {
 
 .select:hover::after {
   color: #6556cd;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-item:nth-child(5) {
+  animation-delay: 0.5s;
 }
