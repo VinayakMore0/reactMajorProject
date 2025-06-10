@@ -8,7 +8,7 @@ import Dropdown from "./templates/Dropdown";
 import Cards from "./templates/Cards";
 
 const Movie = () => {
-  document.title = "Database | Movies";
+  document.title = "MoviDB. | Movies";
   const navigate = useNavigate();
   const [category, setCategory] = useState("now_playing");
   const [movie, setMovie] = useState([]);
@@ -24,13 +24,12 @@ const Movie = () => {
       } else {
         setHasMore(false);
       }
-      // setMovie(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
-  const refreshHandler = async () => {
+  const refreshHandler = () => {
     if (movie.length === 0) {
       GetMovie();
     } else {
@@ -65,6 +64,7 @@ const Movie = () => {
           <div className="w-[2%]"></div>
         </div>
       </div>
+
       <InfiniteScroll
         dataLength={movie.length}
         next={GetMovie}

@@ -8,7 +8,7 @@ import Dropdown from "./templates/Dropdown";
 import Loading from "./Loading";
 
 const Home = () => {
-  document.title = "DataBase | Homepage";
+  document.title = "MoviDB. | Homepage";
   const [wallpaper, setWallpaper] = useState(null);
   const [trending, setTrending] = useState(null);
   const [category, setCategory] = useState("all");
@@ -20,7 +20,7 @@ const Home = () => {
         data.results[(Math.random() * data.results.length).toFixed()];
       setWallpaper(randomData);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
@@ -29,13 +29,13 @@ const Home = () => {
       const { data } = await axios.get(`/trending/${category}/day`);
       setTrending(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
   useEffect(() => {
-    !wallpaper && GetHeaderWallpaper();
     GetTrending();
+    !wallpaper && GetHeaderWallpaper();
   }, [category]);
 
   return wallpaper && trending ? (
@@ -44,9 +44,9 @@ const Home = () => {
       <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
         <Topnav />
         <Header data={wallpaper} />
-
         <div className="flex justify-between p-5">
           <h1 className="text-3xl font-semibold text-zinc-400">Trending</h1>
+
           <Dropdown
             title="Filter"
             options={["tv", "movie", "all"]}

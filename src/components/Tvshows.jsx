@@ -8,7 +8,7 @@ import Dropdown from "./templates/Dropdown";
 import Cards from "./templates/Cards";
 
 const Tvshows = () => {
-  document.title = "Database | Tv Shows";
+  document.title = "MoviDB. | Tv Shows";
   const navigate = useNavigate();
   const [category, setCategory] = useState("airing_today");
   const [tv, setTv] = useState([]);
@@ -24,13 +24,12 @@ const Tvshows = () => {
       } else {
         setHasMore(false);
       }
-      // setTv(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
-  const refreshHandler = async () => {
+  const refreshHandler = () => {
     if (tv.length === 0) {
       GetTv();
     } else {

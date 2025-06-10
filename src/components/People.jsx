@@ -4,11 +4,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import Topnav from "./templates/Topnav";
-import Dropdown from "./templates/Dropdown";
 import Cards from "./templates/Cards";
 
 const People = () => {
-  document.title = "Database | People";
+  document.title = "MoviDB. | People";
   const navigate = useNavigate();
   const [category, setCategory] = useState("popular");
   const [person, setPerson] = useState([]);
@@ -24,13 +23,12 @@ const People = () => {
       } else {
         setHasMore(false);
       }
-      // setPerson(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
-  const refreshHandler = async () => {
+  const refreshHandler = () => {
     if (person.length === 0) {
       GetPerson();
     } else {

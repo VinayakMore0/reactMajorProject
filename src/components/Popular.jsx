@@ -8,7 +8,7 @@ import Dropdown from "./templates/Dropdown";
 import Cards from "./templates/Cards";
 
 const Popular = () => {
-  document.title = "Database | Popular";
+  document.title = "MoviDB. | Popular";
   const navigate = useNavigate();
   const [category, setCategory] = useState("movie");
   const [popular, setPopular] = useState([]);
@@ -24,13 +24,12 @@ const Popular = () => {
       } else {
         setHasMore(false);
       }
-      // setPopular(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
-  const refreshHandler = async () => {
+  const refreshHandler = () => {
     if (popular.length === 0) {
       GetPopular();
     } else {
@@ -64,6 +63,7 @@ const Popular = () => {
           <div className="w-[2%]"></div>
         </div>
       </div>
+
       <InfiniteScroll
         dataLength={popular.length}
         next={GetPopular}

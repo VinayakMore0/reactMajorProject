@@ -41,7 +41,7 @@ const PersonDetails = () => {
           />
           <hr className="mt-10 mb-5 border-none h-[2px] bg-zinc-500" />
           {/* Social Media Links */}
-          <div className="text-xl text-white flex gap-x-5">
+          <div className="text-2xl text-white flex gap-x-5">
             <a
               target="_black"
               href={`https://www.wikidata.org/wiki/${info.externalId.wikidata_id}`}
@@ -75,25 +75,27 @@ const PersonDetails = () => {
           <h1 className="text-lg text-zinc-400 font-semibold">Known For</h1>
           <h1 className="text-zinc-400">{info.detail.known_for_department}</h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold mt-5">Gender</h1>
+          <h1 className="text-lg text-zinc-400 font-semibold mt-3">Gender</h1>
           <h1 className="text-zinc-400">
             {info.detail.gender === 2 ? "Male" : "Female"}
           </h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold">Birthday</h1>
+          <h1 className="text-lg text-zinc-400 font-semibold mt-3">Birthday</h1>
           <h1 className="text-zinc-400">{info.detail.birthday}</h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold">Deathday</h1>
+          <h1 className="text-lg text-zinc-400 font-semibold mt-3">Deathday</h1>
           <h1 className="text-zinc-400">
             {info.detail.deathday ? info.detail.deathday : "Still Alive"}
           </h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold">
+          <h1 className="text-lg text-zinc-400 font-semibold mt-3">
             Place of Birth
           </h1>
           <h1 className="text-zinc-400">{info.detail.place_of_birth}</h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold">Also Known as</h1>
+          <h1 className="text-lg text-zinc-400 font-semibold mt-3">
+            Also Known as
+          </h1>
           <h1 className="text-zinc-400">
             {info.detail.also_known_as.join(", ")}
           </h1>

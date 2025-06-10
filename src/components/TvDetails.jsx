@@ -10,8 +10,10 @@ import {
 import { asyncLoadTv, removeTv } from "../store/actions/tvActions";
 import Loading from "./Loading";
 import HorizontalCards from "./templates/HorizontalCards";
+import noImage from "/noImage.svg";
 
 const TvDetails = () => {
+  document.title = "MoviDB. | Tv Show Details";
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -67,22 +69,23 @@ const TvDetails = () => {
           }`}
           alt={info.detail.title || info.detail.name}
         />
+
         <div className="content ml-[5%] text-white">
           <h1 className="text-5xl font-black">
             {info.detail.title ||
               info.detail.name ||
               info.detail.original_title ||
               info.detail.original_name}{" "}
-            <small className="text-2xl font-bold text-zinc-300">
+            <small className="text-2xl font-bold text-zinc-200">
               ({info.detail.first_air_date.split("-")[0]})
             </small>
           </h1>
 
-          <div className="mt-3 mb-5 flex items-center gap-x-5">
+          <div className="mt-3 mb-5 flex items-center gap-x-3">
             <span className="rounded-full text-xl font-semibold bg-yellow-600 text-white w-[5vh] h-[5vh] flex justify-center items-center">
               {(info.detail.vote_average * 10).toFixed()} <sup>%</sup>
             </span>
-            <h1 className="w-[50px] font-semibold text-2xl leading-6">
+            <h1 className="w-[60px] font-semibold text-2xl leading-6">
               User Score
             </h1>
             <h1>{info.detail.first_air_date}</h1>
@@ -100,14 +103,17 @@ const TvDetails = () => {
           <h1 className="text-2xl mb-3 mt-5">Tv Translated</h1>
           <p className="mb-10">{info.translations.join(", ")}</p>
 
-          <Link to={`${pathname}/trailer`} className="p-5 bg-[#6556CD] rounded">
+          <Link
+            to={`${pathname}/trailer`}
+            className="p-5 bg-[#6556CD] rounded-lg"
+          >
             <i className="text-xl mr-3 ri-play-fill"></i> Play Trailer
           </Link>
         </div>
       </div>
 
       {/* Part 3 Availables on Platforms */}
-      <div className="w-[80%] flex flex-col mt-10 gap-y-5 mb-4">
+      <div className="w-[80%] flex flex-col gap-y-5 mt-10">
         {info.watchProviders && info.watchProviders.flatrate && (
           <div className="flex gap-x-10 items-center text-white">
             <h1>Available on Platform</h1>
@@ -118,7 +124,7 @@ const TvDetails = () => {
                 title={w.provider_name}
                 className=" w-[5vh] h-[5vh] object-cover rounded-md"
                 src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
-                alt=""
+                alt={w.provider_name}
               />
             ))}
           </div>
@@ -134,7 +140,7 @@ const TvDetails = () => {
                 title={w.provider_name}
                 className=" w-[5vh] h-[5vh] object-cover rounded-md"
                 src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
-                alt=""
+                alt={w.provider_name}
               />
             ))}
           </div>
@@ -150,7 +156,7 @@ const TvDetails = () => {
                 title={w.provider_name}
                 className=" w-[5vh] h-[5vh] object-cover rounded-md"
                 src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
-                alt=""
+                alt={w.provider_name}
               />
             ))}
           </div>
@@ -160,15 +166,17 @@ const TvDetails = () => {
       {/* Part 4 Seasons */}
       <hr className="mt-10 mb-5 border-none h-[2px] bg-zinc-500" />
       <h1 className="text-3xl font-bold text-white">Seasons</h1>
-      <div className="w-[100%] flex h-[40vh] overflow-y-hidden mb-5 p-5">
+      <div className="w-[100%] flex overflow-y-hidden mb-5 p-5">
         {info.detail.seasons.length > 0 ? (
           info.detail.seasons.map((s, i) => (
             <div key={i} className="w-[15vh] mr-[8%]">
               <img
                 className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] min-w-[14vw] h-[30vh] object-cover"
-                src={`https://image.tmdb.org/t/p/original/${
-                  s.poster_path || s.backdrop_path
-                }`}
+                src={
+                  s.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${s.poster_path}`
+                    : noImage
+                }
                 alt={s.name}
               />
               <h1 className="text-2xl text-zinc-300 mt-3 font-semibold">
@@ -177,7 +185,7 @@ const TvDetails = () => {
             </div>
           ))
         ) : (
-          <h1 className="text-xl text-white font-black text-center">
+          <h1 className="text-3xl mt-5 text-white font-black text-center">
             Nothing to show
           </h1>
         )}

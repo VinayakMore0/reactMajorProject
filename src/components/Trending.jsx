@@ -8,7 +8,7 @@ import Loading from "./Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Trending = () => {
-  document.title = "Database | Trending";
+  document.title = "MoviDB. | Trending";
   const navigate = useNavigate();
   const [category, setCategory] = useState("all");
   const [duration, setDuration] = useState("day");
@@ -29,11 +29,11 @@ const Trending = () => {
       }
       // setTrending(data.results);
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
 
-  const refreshHandler = async () => {
+  const refreshHandler = () => {
     if (trending.length === 0) {
       GetTrending();
     } else {

@@ -5,9 +5,7 @@ import noImage from "/noImage.svg";
 
 const Topnav = () => {
   const [query, setQuery] = useState("");
-
   const [searches, setSearchers] = useState([]);
-
   const GetSearches = async () => {
     try {
       const { data } = await axios.get(`/search/multi?query=${query}`);
@@ -27,7 +25,7 @@ const Topnav = () => {
       <input
         onChange={(e) => setQuery(e.target.value)}
         value={query}
-        className="w-[50%] text-zinc-400 mx-10 p-5 text-xl outline-none border-none bg-transparent"
+        className="w-[50%] text-zinc-200 mx-10 p-5 text-xl outline-none border-none bg-transparent"
         type="text"
         placeholder="search anything"
       />
@@ -38,28 +36,25 @@ const Topnav = () => {
         ></i>
       )}
       <div className="z-[100] absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[100%] left-[5%] overflow-auto">
-        {searches?.map((search, i) => (
+        {searches?.map((s, i) => (
           <Link
-          to={`/${search.media_type}/details/${search.id}`}
             key={i}
+            to={`/${s.media_type}/details/${s.id}`}
             className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 border-zinc-100"
           >
             <img
               className="w-[10vh] h-[10vh] object-cover rounded mr-5 shadow-lg"
               src={
-                search.backdrop_path || search.profile_path
+                s.backdrop_path || s.profile_path
                   ? `https://image.tmdb.org/t/p/original/${
-                      search.backdrop_path || search.profile_path
+                      s.backdrop_path || s.profile_path
                     }`
                   : noImage
               }
-              alt={search.title || search.name}
+              alt={s.title || s.name}
             />
             <span>
-              {search.title ||
-                search.name ||
-                search.original_title ||
-                search.original_name}
+              {s.title || s.name || s.original_title || s.original_name}
             </span>
           </Link>
         ))}

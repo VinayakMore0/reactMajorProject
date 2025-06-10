@@ -9,6 +9,7 @@ const Trailer = () => {
   const { pathname } = useLocation();
   const category = pathname.includes("movie") ? "movie" : "tv";
   const ytVideo = useSelector((state) => state[category].info.videos);
+  ytVideo && ytVideo.name && (document.title = "MoviDB. | " + ytVideo.name);
 
   return (
     <div className="bg-[rgba(0,0,0,.9)] absolute z-[100] top-0 left-0 w-screen h-screen flex items-center justify-center">
@@ -19,9 +20,9 @@ const Trailer = () => {
       {ytVideo ? (
         <ReactPlayer
           controls
-          height={720}
-          width={1280}
-          url={`https://www.youtube.com/watch?v=${ytVideo.key}`}
+          height={800}
+          width={1500}
+          url={`https://www.youtube-nocookie.com/watch?v=${ytVideo.key}`}
         />
       ) : (
         <NotFound />
