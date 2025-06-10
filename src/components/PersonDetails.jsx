@@ -102,7 +102,7 @@ const PersonDetails = () => {
         </div>
 
         {/* Part 3 right Details and information */}
-        <div className="w-[80%] ml-[5%]">
+        <div className="w-[80%] ml-[5%] mb-[5%]">
           <h1 className="text-6xl text-zinc-400 font-black my-5">
             {info.detail.name}
           </h1>

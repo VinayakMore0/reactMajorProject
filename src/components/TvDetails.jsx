@@ -90,7 +90,8 @@ const TvDetails = () => {
             </h1>
             <h1>{info.detail.first_air_date}</h1>
             <h1>{info.detail.genres.map((g) => g.name).join(", ")}</h1>
-            <h1>{info.detail.runtime}min</h1>
+            <h1>{info.detail.number_of_episodes} Episodes</h1>
+            <h1>{info.detail.number_of_seasons} Seasons</h1>
           </div>
 
           <h1 className="text-xl font-semibold italic text-zinc-200">
